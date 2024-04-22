@@ -1,0 +1,22 @@
+---
+- name: Install and Start nginx
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Start nginx
+      # shell : systemctl start nginx
+      service :
+          name : nginx
+          state : started
+
+
+
+          # ansible-playbook -i inventory playbook.yml
+          # v - verbose - debug logs - steps ansible is doing on the target server
+          # vvv - very verbose - debug logs - steps ansible is doing on the target server
+          # manage kubernetes cluster
